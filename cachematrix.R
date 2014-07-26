@@ -8,7 +8,9 @@ makeCacheMatrix <- function(x = matrix()) {
     
     ## A set of closure functions
     set <- function(y, ...) {
-        x <<- matrix(y, ...)
+        if (class(y) == 'matrix') x <<- y
+        else x <<- matrix(y, ...)
+        
         matrix <<- NULL
     }
     get <- function() x
